@@ -16,6 +16,11 @@ func WriteCSV(fileName string, stocks []Stock) {
 	writer := csv.NewWriter(file)
 	defer writer.Flush()
 
+	// Write headers
+	headers := []string{"Company", "Price", "Change"}
+	writer.Write(headers)
+
+	// Write actually data
 	for _, stock := range stocks {
 		record := []string{
 			stock.company,
